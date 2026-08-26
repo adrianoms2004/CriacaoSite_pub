@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CriacaoSite — Portfólio</title>
+<style>
+  :root {
+    --paper: #F5F3EF; --card: #FFFFFF; --ink: #0F0F0F; --ink-soft: #5A5A5A;
+    --teal: #1A1A1A; --teal-dark: #0F0F0F; --gold: #C9A86A; --line: #D5D0C5;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  header.hero { background: linear-gradient(160deg, var(--teal) 0%, var(--teal-dark) 100%); color: #F5F3EF; padding: 72px 0 60px; }
+  header.hero .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+  header.hero h1 { font-size: 2.4rem; margin: 0 0 14px; letter-spacing: -0.01em; }
+  header.hero p.lede { font-size: 1.1rem; max-width: 620px; color: #D5D0C5; margin: 0 0 26px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); color: #F5F3EF; padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; }
+  main { padding: 56px 0 80px; }
+  section { margin-bottom: 56px; }
+  h2 { font-size: 1.5rem; margin: 0 0 18px; color: var(--teal); }
+  h2 .num { color: var(--gold); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  p.intro { max-width: 720px; color: var(--ink-soft); font-size: 1.02rem; }
+  .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .feature h3 { margin: 0 0 6px; font-size: 1rem; color: var(--teal); }
+  .feature p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+  .stack-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .stack-item { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; font-size: 0.88rem; font-weight: 600; color: var(--teal); }
+  .shots-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 700; margin: 0 0 12px; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-bottom: 32px; }
+  .shots.mobile { grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); }
+  figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+  figure img { width: 100%; display: block; border-bottom: 1px solid var(--line); }
+  .shots:not(.mobile) img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+  .shots.mobile img { aspect-ratio: 9 / 16; object-fit: cover; object-position: top; }
+  figcaption { padding: 12px 16px; font-size: 0.86rem; color: var(--ink-soft); flex: 1; }
+  figcaption strong { color: var(--ink); display: block; margin-bottom: 2px; font-size: 0.92rem; }
+  .note { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 6px; padding: 16px 20px; font-size: 0.9rem; color: var(--ink-soft); }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; text-align: center; color: var(--ink-soft); font-size: 0.84rem; }
+  @media (max-width: 640px) {
+    header.hero { padding: 52px 0 44px; }
+    header.hero h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Portfólio — projeto autoral</div>
+    <h1>CriacaoSite</h1>
+    <p class="lede">Gerador de sites estáticos com wizard guiado, IA opcional para textos, 12 paletas + custom, 4 layouts e um admin por site para o cliente fazer a manutenção sozinho — cada site gera também seu painel admin.</p>
+    <div class="badges">
+      <span class="badge">Next.js 16</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">Turbopack</span>
+      <span class="badge">Tailwind</span>
+      <span class="badge">Docker</span>
+      <span class="badge">Caddy</span>
+      <span class="badge">PWA</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="num">01</span>O que é</h2>
+    <p class="intro">
+      Ferramenta para criar landing pages rápidas sem depender de WordPress: um wizard em 8 etapas gera um site estático
+      (<code>sites/[slug]/index.html</code> + <code>style.css</code> + <code>script.js</code>) com preview em <code>/sites/[slug]/</code>,
+      galeria com lightbox, e um admin exclusivo por site. Roda como serviço Docker único, com volume para os sites e deploy via <code>ship.ps1</code>.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>Funcionalidades</h2>
+    <div class="grid-features">
+      <div class="feature">
+        <h3>Wizard 8 etapas</h3>
+        <p>Modo (Next/static), assistente, objetivo, segmento, identidade/paleta/layout, blocos, integrações e resumo — com preview ao vivo.</p>
+      </div>
+      <div class="feature">
+        <h3>IA opcional</h3>
+        <p>Gera lede, sobre, serviços e prompts de imagens via endpoint OpenAI compatível (ex: LM Studio local).</p>
+      </div>
+      <div class="feature">
+        <h3>12 paletas + custom</h3>
+        <p>Safecare, Ocean, Noir, Blush etc. + 2 cores customizáveis, 4 layouts (modern/bold/minimal/classic).</p>
+      </div>
+      <div class="feature">
+        <h3>Blocos opt-in</h3>
+        <p>Hero, Sobre, Serviços, Equipe, Galeria, Depoimentos, Como funciona, FAQ, Mapa, Formulário, Newsletter, Instagram.</p>
+      </div>
+      <div class="feature">
+        <h3>Galeria com lightbox</h3>
+        <p>Até 12 imagens (upload ou URL), com modal ampliado, navegação por setas, swipe e <code>Esc</code> para fechar.</p>
+      </div>
+      <div class="feature">
+        <h3>Admin por site</h3>
+        <p>Cada site gera <code>/sites/[slug]/admin/</code> estático + rota dinâmica <code>/sites/[slug]/admin</code> para o cliente editar sozinho.</p>
+      </div>
+      <div class="feature">
+        <h3>Admin central</h3>
+        <p><code>/admin</code> lista todos os sites, com senha dinâmica <code>admin+DDMM</code> (fuso America/Sao_Paulo).</p>
+      </div>
+      <div class="feature">
+        <h3>Gestão completa</h3>
+        <p>Imagens, comentários, Instagram, newsletter (SMTP), WhatsApp, destaque, serviços, Como funciona, currículo, equipe e sobre.</p>
+      </div>
+      <div class="feature">
+        <h3>Export estático</h3>
+        <p>Pasta <code>sites/[slug]/</code> já contém <code>admin/index.html</code> — ao mandar para o cliente, o <code>site.com/admin/</code> funciona offline.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>Tecnologias</h2>
+    <div class="stack-row">
+      <span class="stack-item">Next.js 16.3</span>
+      <span class="stack-item">TypeScript</span>
+      <span class="stack-item">Turbopack</span>
+      <span class="stack-item">Tailwind CSS</span>
+      <span class="stack-item">Node 20 Alpine</span>
+      <span class="stack-item">Docker</span>
+      <span class="stack-item">Caddy (HTTPS)</span>
+      <span class="stack-item">GitHub Pages</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Capturas de tela</h2>
+
+    <p class="shots-label">Wizard e preview</p>
+    <div class="shots">
+      <figure>
+        <img src="imagens/wizard-paleta.png" alt="Wizard paleta e layout">
+        <figcaption><strong>Wizard</strong>Escolha de paleta, layout e blocos com preview ao vivo.</figcaption>
+      </figure>
+      <figure>
+        <img src="imagens/site-hero.png" alt="Site gerado hero">
+        <figcaption><strong>Site gerado</strong>Hero com lede, destaque e CTA para WhatsApp.</figcaption>
+      </figure>
+      <figure>
+        <img src="imagens/site-galeria.png" alt="Galeria com lightbox">
+        <figcaption><strong>Galeria</strong>6 imagens com selos e modal ampliado.</figcaption>
+      </figure>
+      <figure>
+        <img src="imagens/admin-central.png" alt="Admin central">
+        <figcaption><strong>Admin central</strong>Lista de sites com acesso <code>admin+DDMM</code>.</figcaption>
+      </figure>
+    </div>
+
+    <p class="shots-label">Admin por site</p>
+    <div class="shots">
+      <figure>
+        <img src="imagens/admin-site-imagens.png" alt="Admin do site imagens">
+        <figcaption><strong>Imagens</strong>Upload drag & drop e URLs da galeria.</figcaption>
+      </figure>
+      <figure>
+        <img src="imagens/admin-site-comofunciona.png" alt="Admin como funciona">
+        <figcaption><strong>Como funciona</strong>Edição de eyebrow, título e passos.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="note">
+      Este repositório mostra apenas a página de divulgação — o código-fonte principal está em <a href="https://github.com/adrianoms2004/CriacaoSite">adrianoms2004/CriacaoSite</a> (privado/comercial).
+      O gerador roda em <a href="https://criacaosite.gmsafecare.com">criacaosite.gmsafecare.com</a> e cada site fica em <code>/sites/[slug]/</code> com admin em <code>/sites/[slug]/admin/</code>.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Projeto autoral, desenvolvido com apoio de IA (Muse Spark) · Adriano Martins da Silva — 2026
+</footer>
+
+</body>
+</html>
